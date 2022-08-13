@@ -9,10 +9,6 @@ public class Population {
 
     private Integer generation;
 
-    private static final Double CROSSOVER_RATE = 0.65;
-
-    private static final Double MUTATION_RATE = 0.009;
-
     public Integer getPopSize() {
         return this.popSize;
     }
@@ -93,7 +89,7 @@ public class Population {
         }
     }
 
-    public Population crossover() {
+    public Population crossover(Double crossoverRate) {
         // Here, we need to recombine members to generate offspring and add it to population
         Random rn = new Random();
         ArrayList<Member> offspringPopulation = new ArrayList<>();
@@ -107,7 +103,7 @@ public class Population {
 
             // Crossover rate check
             Double chanceToGenOffspring = rn.nextDouble(0.0, 1.0);
-            if (chanceToGenOffspring <= CROSSOVER_RATE) {
+            if (chanceToGenOffspring <= crossoverRate) {
                 int length = parentA.length();
                 int cutPosition = rn.nextInt(0, length-1);
                 String sTailA = parentA.substring(cutPosition);
@@ -136,13 +132,13 @@ public class Population {
         return offspring;
     }
 
-    public void mutate() {
+    public void mutate(Double mutationRate) {
         Random rn = new Random();
         for (Member member: this.getPopMembers()
              ) {
             for (int i = 0; i < member.getCromosoma().length(); i++) {
                 Double chanceToBitFlipGen = rn.nextDouble(0.0, 1.0);
-                if (chanceToBitFlipGen <= MUTATION_RATE) {
+                if (chanceToBitFlipGen <= mutationRate) {
                     // If it is inside mutation range interval then the bit at index i is flipped
                     String s = member.getCromosoma();
                     char[] chars = new char[s.length()];

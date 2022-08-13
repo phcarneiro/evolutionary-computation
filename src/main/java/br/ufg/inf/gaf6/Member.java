@@ -67,15 +67,13 @@ public class Member {
         // Convert xDec and yDec to a real number
         // Sum to the minimum
         // Maximum to 5 digits after decimal
-        DecimalFormat df = new DecimalFormat("#.00000");
-
         Double xReal  = xDec * (200 / (Math.pow(2, 22) - 1));
         xReal = xReal + -100;
         Double yReal  = yDec * (200 / (Math.pow(2, 22) - 1));
         yReal = yReal + -100;
 
-        xReal = new BigDecimal(xReal).setScale(5, BigDecimal.ROUND_HALF_UP).doubleValue();
-        yReal = new BigDecimal(yReal).setScale(5, BigDecimal.ROUND_HALF_UP).doubleValue();
+        xReal = Double.valueOf(Math.round(xReal*100000)/100000.0);
+        yReal = Double.valueOf(Math.round(yReal*100000)/100000.0);
 
         // Applying xReal and yReal into the F6 function
         // Tests ok - here below
@@ -106,6 +104,8 @@ public class Member {
         Double yReal  = yDec * (200 / (Math.pow(2, 22) - 1));
         yReal = yReal + -100;
 
+        xReal = Double.valueOf(Math.round(xReal*100000)/100000.0);
+        yReal = Double.valueOf(Math.round(yReal*100000)/100000.0);
         return xReal.toString() + " | " + yReal.toString();
     }
 }

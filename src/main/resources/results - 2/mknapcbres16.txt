@@ -1,0 +1,11 @@
+Final results:2022-07-31 00:15:47.401
+Best cromossoma so far: 0101101010000000101001010010000100000010000100000110000010100011010010000100001001001100000010010010
+Best feasible results: 23355
+Does solution fit weight limits? true
+Weights N1: 11610
+Weights N2: 13676
+Weights N3: 11409
+Weights N4: 12203
+Weights N5: 13394
+Weights limits: [11927, 13727, 11551, 13056, 13460]
+########################
